@@ -29,18 +29,21 @@ namespace CriadorDePastas
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(textBox2.Text, out int quantidade))
+            // Valida se a quantidade é um número válido
+            if (!int.TryParse(textBox2.Text, out int quantidade) || quantidade <= 0)
             {
-                MessageBox.Show("Por favor, insira um número válido na quantidade.",
+                MessageBox.Show("Por favor, insira um número válido maior que zero na quantidade.",
                                 "Erro",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 return;
             }
-            else { 
+
             string caminhoBase = textBox4.Text;
             string nomePasta = textBox1.Text;
-            if (string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox1.Text))
+
+            // Valida se os campos obrigatórios estão preenchidos
+            if (string.IsNullOrEmpty(caminhoBase) || string.IsNullOrEmpty(nomePasta))
             {
                 MessageBox.Show("Por favor, preencha todos os campos.",
                                 "Erro",
@@ -48,15 +51,7 @@ namespace CriadorDePastas
                                 MessageBoxIcon.Error);
                 return;
             }
-            else if (int.Parse(textBox2.Text) <= 0)
-            {
-                MessageBox.Show("A quantidade deve ser maior que zero.",
-                                "Erro",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
 
-                return;
-            }
             // Verifica se o caminho base existe
             if (!Directory.Exists(caminhoBase))
             {
@@ -66,9 +61,9 @@ namespace CriadorDePastas
                                 MessageBoxIcon.Error);
                 return;
             }
-            // Verifica se o nome da pasta já existe
 
-            else if (Directory.Exists(Path.Combine(caminhoBase, nomePasta)))
+            // Verifica se o nome da pasta já existe
+            if (Directory.Exists(Path.Combine(caminhoBase, nomePasta)))
             {
                 MessageBox.Show("Uma pasta com esse nome já existe.",
                                 "Erro",
@@ -76,8 +71,9 @@ namespace CriadorDePastas
                                 MessageBoxIcon.Error);
                 return;
             }
+
             // Verifica se o nome da pasta contém caracteres inválidos
-            else if (nomePasta.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            if (nomePasta.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
             {
                 MessageBox.Show("O nome da pasta contém caracteres inválidos.",
                                 "Erro",
@@ -85,36 +81,38 @@ namespace CriadorDePastas
                                 MessageBoxIcon.Error);
                 return;
             }
-            // Verifica se o caminho base é um diretório
-            else if (!Directory.Exists(caminhoBase))
-            {
-                MessageBox.Show("O caminho base não é um diretório.",
-                                "Erro",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                return;
-            }
-            else { 
-                string caminhoPasta = Path.Combine(caminhoBase, nomePasta);
-            
-            for (int i = 0; i < quantidade; i++)
-                {
-                    // Cria o nome da pasta com o número sequencial
-                    string nomePastaCompleto = $"{nomePasta} {i + 1}";
-                    // Cria o caminho completo da pasta
-                    string caminhoCompleto = Path.Combine(caminhoBase, nomePastaCompleto);
-                    // Cria a pasta
-                    Directory.CreateDirectory(caminhoCompleto);
-                }
-                    // Exibe uma mensagem de sucesso
-                    MessageBox.Show($"Foram criadas {nomePasta} {quantidade} no local: {caminhoBase}",
-                                "Sucesso",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
 
+            // Confirmação para grandes quantidades
+            if (quantidade >= 20)
+            {
+                DialogResult result = MessageBox.Show($"Você está prestes a criar {quantidade} pastas. Deseja continuar?",
+                                                      "Atenção",
+                                                      MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Warning);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            // Criação das pastas
+            for (int i = 0; i < quantidade; i++)
+            {
+                string nomePastaCompleto = $"{nomePasta} {i + 1}";
+                string caminhoCompleto = Path.Combine(caminhoBase, nomePastaCompleto);
+                Directory.CreateDirectory(caminhoCompleto);
+            }
+
+            // Mensagem de sucesso
+            MessageBox.Show($"Foram criadas {quantidade} pastas com o nome '{nomePasta}' no local: {caminhoBase}",
+                            "Sucesso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
         }
-        }
-        }
+
+    
+        
+        
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
