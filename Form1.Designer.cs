@@ -149,6 +149,8 @@
             Controls.Add(label4);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Form1";
             Load += Form1_Load;
             groupBox1.ResumeLayout(false);
