@@ -1,3 +1,5 @@
+using System.Threading;
+
 namespace CriadorDePastas
 {
     public partial class Form1 : Form
@@ -151,7 +153,17 @@ namespace CriadorDePastas
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("pt-BR");
+                    break;
+                case 1:
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+                    break;
+            }
+            this.Controls.Clear();
+            InitializeComponent();
         }
 
         private void label4_Click(object sender, EventArgs e)
