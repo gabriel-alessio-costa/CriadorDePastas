@@ -19,12 +19,12 @@ namespace CriadorDePastas
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -110,9 +110,9 @@ namespace CriadorDePastas
                             MessageBoxIcon.Information);
         }
 
-    
-        
-        
+
+
+
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
@@ -146,7 +146,17 @@ namespace CriadorDePastas
 
         private void label5_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
