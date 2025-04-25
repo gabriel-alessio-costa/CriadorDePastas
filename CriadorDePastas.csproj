@@ -13,4 +13,8 @@
     <Content Include="Icone\Icone_Pastas.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
+using System.Resources;
 using System.Threading;
+using CriadorDePastas.;
 
 namespace CriadorDePastas
 {
@@ -35,7 +37,7 @@ namespace CriadorDePastas
             if (!int.TryParse(textBox2.Text, out int quantidade) || quantidade <= 0)
             {
                 MessageBox.Show("Por favor, insira um número válido maior que zero na quantidade.",
-                                "Erro",
+                                "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 return;
@@ -48,7 +50,7 @@ namespace CriadorDePastas
             if (string.IsNullOrEmpty(caminhoBase) || string.IsNullOrEmpty(nomePasta))
             {
                 MessageBox.Show("Por favor, preencha todos os campos.",
-                                "Erro",
+                                "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 return;
@@ -58,7 +60,7 @@ namespace CriadorDePastas
             if (!Directory.Exists(caminhoBase))
             {
                 MessageBox.Show("O caminho base não existe.",
-                                "Erro",
+                                "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 return;
@@ -68,7 +70,7 @@ namespace CriadorDePastas
             if (Directory.Exists(Path.Combine(caminhoBase, nomePasta)))
             {
                 MessageBox.Show("Uma pasta com esse nome já existe.",
-                                "Erro",
+                                "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 return;
@@ -78,16 +80,24 @@ namespace CriadorDePastas
             if (nomePasta.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
             {
                 MessageBox.Show("O nome da pasta contém caracteres inválidos.",
-                                "Erro",
+                                "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 return;
             }
 
-            // Confirmação para grandes quantidades
-            if (quantidade >= 20)
+            // Validação para grandes quantidades
+            if (quantidade > 1000)
             {
-                DialogResult result = MessageBox.Show($"Você está prestes a criar {quantidade} pastas. Deseja continuar?",
+                MessageBox.Show("O número máximo de pastas que podem ser criadas é 1000.",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                return;
+            }
+                else if (quantidade >= 20)
+                {
+                    DialogResult result = MessageBox.Show($"Você está prestes a criar {quantidade} pastas. Deseja continuar?",
                                                       "Atenção",
                                                       MessageBoxButtons.YesNo,
                                                       MessageBoxIcon.Warning);
@@ -95,7 +105,10 @@ namespace CriadorDePastas
                 {
                     return;
                 }
-            }
+            } 
+
+            
+            
 
             // Criação das pastas
             for (int i = 0; i < quantidade; i++)
@@ -106,7 +119,7 @@ namespace CriadorDePastas
             }
 
             // Mensagem de sucesso
-            MessageBox.Show($"Foram criadas {quantidade} pastas com o nome '{nomePasta}' no local: {caminhoBase}",
+            MessageBox.Show(string.Format(Resources.,
                             "Sucesso",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);

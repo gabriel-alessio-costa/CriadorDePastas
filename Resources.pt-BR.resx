@@ -117,12 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.TrayHeight" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="label1.Text" xml:space="preserve">
+    <value>Onde deseja gerar as pastas:</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Crie Suas Pastas</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Onde Criar</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Linguagem:</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
     <value>Gerar</value>
@@ -130,22 +132,44 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Digite o número de pastas a serem geradas:</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Digite o nome das pastas:</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Onde Criar</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Procurar</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Onde deseja gerar as pastas:</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Crie Suas Pastas</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Gerador de Pastas</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Linguagem:</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Digite o nome das pastas:</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Procurar</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.TrayHeight" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="quantidade_valida" xml:space="preserve">
+    <value>Por favor, insira um número válido maior que zero na quantidade.</value>
+  </data>
+  <data name="Campo_Obrigatorio" xml:space="preserve">
+    <value>Por favor, preencha todos os campos.</value>
+  </data>
+  <data name="Caminho_existente" xml:space="preserve">
+    <value>O caminho base não existe.</value>
+  </data>
+  <data name="nome_duplicado" xml:space="preserve">
+    <value>Uma pasta com esse nome já existe.</value>
+  </data>
+  <data name="Quantidade_Invalida" xml:space="preserve">
+    <value>O número máximo de pastas que podem ser criadas é 1000.</value>
+  </data>
+  <data name="Quantidad_Grande" xml:space="preserve">
+    <value>Você está prestes a criar {quantidade} pastas. Deseja continuar?</value>
+  </data>
+  <data name="Pastas_Criadas" xml:space="preserve">
+    <value>Foram criadas {quantidade} pastas com p nome '{nomePasta}' no local: {caminhoBase}.</value>
+  </data>
+  <data name="Sucesso" xml:space="preserve">
+    <value>Sucesso</value>
   </data>
 </root>
